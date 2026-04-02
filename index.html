@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aromatic Beans — Ethically Sourced Coffee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --espresso: #180c04;
+    --dark-roast: #2e1608;
+    --roast: #5c2d0e;
+    --amber: #c07b2a;
+    --gold: #e0a848;
+    --cream: #f9f2e7;
+    --ivory: #fdf8f0;
+    --mist: #ede4d4;
+    --text-body: #3a2010;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--ivory);
+    color: var(--text-body);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 60px;
+    background: rgba(24, 12, 4, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(192, 123, 42, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mist); text-decoration: none; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--amber); color: #fff;
+    border: none; padding: 10px 24px;
+    font-family: 'Outfit', sans-serif; font-size: 0.78rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600; cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--espresso);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 60px 80px;
+  }
+  .hero-bg-circle {
+    position: absolute; border-radius: 50%;
+    background: radial-gradient(circle, rgba(192,123,42,0.18) 0%, transparent 70%);
+  }
+  .hero-bg-circle.c1 { width: 700px; height: 700px; top: -200px; right: -200px; }
+  .hero-bg-circle.c2 { width: 400px; height: 400px; bottom: -100px; left: 100px; }
+  .hero-grain {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 680px; }
+  .hero-eyebrow {
+    display: inline-block; 
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(192,123,42,0.4);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 1.0;
+    color: var(--cream);
+    font-weight: 300;
+    margin-bottom: 12px;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 1rem; color: rgba(249,242,231,0.65);
+    line-height: 1.75; margin: 28px 0 44px;
+    max-width: 480px; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--amber); color: #fff;
+    padding: 14px 36px; border: none;
+    font-family: 'Outfit', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1px solid rgba(249,242,231,0.35); color: var(--cream);
+    padding: 14px 36px;
+    font-family: 'Outfit', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    background: transparent; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--amber); color: var(--gold); }
+
+  .hero-stats {
+    position: absolute; right: 60px; bottom: 80px; z-index: 2;
+    display: flex; flex-direction: column; gap: 32px; align-items: flex-end;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem; line-height: 1; color: var(--gold); font-weight: 300;
+  }
+  .stat-label {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(249,242,231,0.45); margin-top: 4px;
+  }
+  .stat-divider {
+    width: 1px; height: 40px;
+    background: rgba(192,123,42,0.3);
+    align-self: flex-end;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--amber);
+    padding: 14px 0; overflow: hidden;
+  }
+  .marquee-track {
+    display: flex; gap: 60px; white-space: nowrap;
+    animation: marquee 22s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #fff; font-weight: 600; flex-shrink: 0;
+  }
+  .marquee-dot { opacity: 0.5; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── ABOUT ── */
+  .about {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  .about-img {
+    background: var(--dark-roast);
+    position: relative; overflow: hidden;
+    min-height: 500px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-inner {
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(192,123,42,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(94,46,14,0.6) 0%, transparent 50%),
+      var(--dark-roast);
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8rem;
+  }
+  .coffee-icon { opacity: 0.15; user-select: none; }
+  .about-decor {
+    position: absolute; width: 200px; height: 200px;
+    border: 1px solid rgba(192,123,42,0.2); border-radius: 50%;
+  }
+  .about-decor.d1 { top: 60px; left: 60px; }
+  .about-decor.d2 { bottom: 40px; right: 40px; width: 120px; height: 120px; }
+  .about-text {
+    background: var(--cream);
+    padding: 80px 70px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 20px;
+  }
+  .about-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-weight: 400; line-height: 1.15;
+    color: var(--espresso); margin-bottom: 28px;
+  }
+  .about-text p {
+    font-size: 0.95rem; line-height: 1.8; color: #5a3820;
+    font-weight: 300; margin-bottom: 16px;
+  }
+  .about-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 32px; }
+  .tag {
+    border: 1px solid var(--amber); padding: 6px 16px;
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--roast); font-weight: 500;
+  }
+
+  /* ── PRODUCTS ── */
+  #products { padding: 100px 60px; background: var(--ivory); }
+  .section-header { text-align: center; margin-bottom: 64px; }
+  .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 400; color: var(--espresso);
+    line-height: 1.1;
+  }
+  .section-header p {
+    font-size: 0.95rem; color: #7a5030; margin-top: 16px;
+    font-weight: 300; max-width: 420px; margin-inline: auto;
+  }
+  .products-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .product-card {
+    background: #fff;
+    border: 1px solid var(--mist);
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(24,12,4,0.14);
+  }
+  .product-card-img {
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .product-card-img.la-bamba {
+    background: linear-gradient(135deg, #2a1200 0%, #7a3a10 50%, #c07010 100%);
+  }
+  .product-card-img.kamelot {
+    background: linear-gradient(135deg, #3a2a10 0%, #8a6020 50%, #d4a040 100%);
+  }
+  .product-card-img.splash {
+    background: linear-gradient(135deg, #1a1a0a 0%, #4a3010 50%, #8a6428 100%);
+  }
+  .product-card-img.one-shot {
+    background: linear-gradient(135deg, #0e0804 0%, #2e1208 50%, #5c2a10 100%);
+  }
+  .roast-badge {
+    position: absolute; top: 16px; right: 16px;
+    font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); font-weight: 600;
+    background: rgba(0,0,0,0.25); padding: 4px 10px;
+  }
+  .product-icon {
+    font-size: 4rem; opacity: 0.3; user-select: none;
+  }
+  .product-name-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px 20px 14px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 500; color: #fff;
+    font-style: italic;
+  }
+  .product-body { padding: 20px 20px 24px; }
+  .product-type {
+    font-size: 0.67rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 8px;
+  }
+  .product-desc {
+    font-size: 0.88rem; color: #7a5030;
+    line-height: 1.6; font-weight: 300; margin-bottom: 18px;
+  }
+  .product-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid var(--mist); padding-top: 16px;
+  }
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 500; color: var(--espresso);
+  }
+  .product-size { font-size: 0.72rem; color: #9a7050; }
+  .btn-order {
+    background: var(--espresso); color: var(--cream);
+    padding: 8px 18px; border: none; cursor: pointer;
+    font-family: 'Outfit', sans-serif; font-size: 0.72rem;
+    letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .btn-order:hover { background: var(--amber); }
+
+  /* ── SPECIAL OFFER ── */
+  .special {
+    background: var(--dark-roast);
+    padding: 80px 60px;
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .special::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(192,123,42,0.2) 0%, transparent 70%);
+  }
+  .special-content { position: relative; z-index: 1; }
+  .special-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 20px;
+    display: block;
+  }
+  .special h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    color: var(--cream); font-weight: 300; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .special h2 strong {
+    font-weight: 600; color: var(--gold);
+    display: block; font-size: 1.1em;
+  }
+  .special-desc {
+    color: rgba(249,242,231,0.6); font-size: 0.95rem;
+    font-weight: 300; margin-bottom: 40px; max-width: 400px; margin-inline: auto;
+    margin-bottom: 40px;
+  }
+  .promo-code {
+    display: inline-block;
+    border: 1px solid rgba(192,123,42,0.4);
+    padding: 12px 28px; margin-bottom: 36px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.2em;
+    color: var(--gold); font-weight: 600;
+  }
+  .promo-label { font-size: 0.68rem; color: rgba(249,242,231,0.4); letter-spacing: 0.1em; }
+
+  /* ── K-CUPS ── */
+  .kcups {
+    padding: 100px 60px;
+    background: var(--cream);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .kcups-text {}
+  .kcups-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+    font-weight: 400; line-height: 1.15;
+    color: var(--espresso); margin-bottom: 24px;
+  }
+  .kcups-text p {
+    font-size: 0.95rem; line-height: 1.8; color: #5a3820;
+    font-weight: 300; margin-bottom: 32px;
+  }
+  .kcup-flavors {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 12px; margin-bottom: 36px;
+  }
+  .kcup-flavor {
+    padding: 12px 16px;
+    border-left: 2px solid var(--amber);
+    background: #fff;
+  }
+  .kcup-flavor-name {
+    font-size: 0.82rem; font-weight: 600; color: var(--espresso);
+    letter-spacing: 0.04em;
+  }
+  .kcup-flavor-sub {
+    font-size: 0.72rem; color: #9a7050; margin-top: 2px;
+  }
+  .kcups-visual {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .kcups-display {
+    width: 360px; height: 360px;
+    border-radius: 50%;
+    background:
+      radial-gradient(ellipse at 35% 40%, rgba(192,123,42,0.3) 0%, transparent 55%),
+      var(--dark-roast);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .kcups-display-text {
+    text-align: center; color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .kcups-display-text .big { font-size: 5rem; font-weight: 300; line-height: 1; color: var(--gold); }
+  .kcups-display-text .small { font-size: 0.78rem; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-top: 8px; }
+  .kcups-display-text .price { font-size: 1.3rem; margin-top: 12px; opacity: 0.85; }
+  .kcups-ring {
+    position: absolute; inset: -20px;
+    border: 1px solid rgba(192,123,42,0.25); border-radius: 50%;
+  }
+  .kcups-ring2 {
+    position: absolute; inset: -40px;
+    border: 1px dashed rgba(192,123,42,0.12); border-radius: 50%;
+  }
+
+  /* ── INSTAGRAM ── */
+  .insta {
+    background: var(--espresso); padding: 80px 60px;
+    text-align: center;
+  }
+  .insta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--cream); font-weight: 300; margin-bottom: 12px;
+  }
+  .insta-handle { color: var(--amber); font-style: italic; }
+  .insta p {
+    font-size: 0.88rem; color: rgba(249,242,231,0.5);
+    margin-bottom: 36px; font-weight: 300;
+  }
+  .insta-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid rgba(192,123,42,0.4); padding: 12px 30px;
+    color: var(--gold); text-decoration: none;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; transition: background 0.2s, border-color 0.2s;
+  }
+  .insta-btn:hover { background: rgba(192,123,42,0.15); border-color: var(--amber); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0e0704;
+    padding: 60px 60px 40px;
+    border-top: 1px solid rgba(192,123,42,0.15);
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px; margin-bottom: 48px;
+  }
+  .footer-brand {}
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; color: var(--gold); font-weight: 600;
+    margin-bottom: 16px; display: block;
+  }
+  .footer-tagline {
+    font-size: 0.88rem; color: rgba(249,242,231,0.4);
+    line-height: 1.7; font-weight: 300; max-width: 280px;
+  }
+  .footer-col h4 {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--amber); font-weight: 600; margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-col a {
+    font-size: 0.88rem; color: rgba(249,242,231,0.5);
+    text-decoration: none; font-weight: 300; transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+  .footer-col p {
+    font-size: 0.88rem; color: rgba(249,242,231,0.5);
+    line-height: 1.7; font-weight: 300;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(249,242,231,0.07);
+    padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy {
+    font-size: 0.75rem; color: rgba(249,242,231,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero h1 { animation-delay: 0.25s; }
+  .hero-sub { animation-delay: 0.4s; }
+  .hero-actions { animation-delay: 0.55s; }
+
+  /* responsive basics */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    .about { grid-template-columns: 1fr; }
+    .about-img { min-height: 300px; }
+    .about-text { padding: 48px 32px; }
+    #products { padding: 60px 24px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .kcups { grid-template-columns: 1fr; padding: 60px 24px; gap: 48px; }
+    .kcups-visual { display: none; }
+    .special { padding: 60px 24px; }
+    footer { padding: 48px 24px 32px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  }
+  @media (max-width: 560px) {
+    .products-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Aromatic Beans</a>
+  <ul class="nav-links">
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#about">Our Story</a></li>
+    <li><a href="#kcups">K-Cups</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#products" class="nav-cta">Order Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow fade-up">Ethically Sourced · Sustainably Produced</span>
+    <h1 class="fade-up">Morning,<br>Noon<br><em>& Night.</em></h1>
+    <p class="hero-sub fade-up">This coffee is just right. Crafted from the finest beans, sourced from 8 countries, roasted to perfection — every cup is an experience worth savoring.</p>
+    <div class="hero-actions fade-up">
+      <a href="#products" class="btn-primary">Shop Our Blends</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">95</div>
+      <div class="stat-label">Taste Tests</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Countries</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Signature Blends</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">La Bamba — Single Origin</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">The Kamelot — Light Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">Splash — Medium Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">One Shot — Dark Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">Ethically Sourced Coffee</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">8 Countries · 4 Blends</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">La Bamba — Single Origin</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">The Kamelot — Light Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">Splash — Medium Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">One Shot — Dark Roast</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">Ethically Sourced Coffee</span>
+    <span class="marquee-item marquee-dot">✦</span>
+    <span class="marquee-item">8 Countries · 4 Blends</span>
+    <span class="marquee-item marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-img">
+    <div class="about-img-inner">
+      <span class="coffee-icon">☕</span>
+    </div>
+    <div class="about-decor d1"></div>
+    <div class="about-decor d2"></div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">Our Story</div>
+    <h2>Coffee should be an<br><em style="font-style:italic">experience</em>, not just<br>a beverage.</h2>
+    <p>We introduced Aromatic Beans to a world that deserved better coffee. Sourced from the finest farms across 8 countries, each bean is selected for its unique character and roasted with care to bring out the best of its origin.</p>
+    <p>We believe guilt-free enjoyment starts at the source. That's why every bag is ethically sourced and sustainably produced — because great coffee should be good for everyone involved.</p>
+    <div class="about-tags">
+      <span class="tag">Ethically Sourced</span>
+      <span class="tag">Sustainably Produced</span>
+      <span class="tag">8 Countries</span>
+      <span class="tag">Small Batch</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-header">
+    <div class="section-label">The Collection</div>
+    <h2>Four Signature<br><em style="font-style:italic; font-family:'Cormorant Garamond',serif">Blends</em></h2>
+    <p>Each blend tells the story of where it came from. Find your perfect cup.</p>
+  </div>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-card-img la-bamba">
+        <span class="product-icon">☕</span>
+        <div class="roast-badge">Single Origin</div>
+        <div class="product-name-overlay">La Bamba</div>
+      </div>
+      <div class="product-body">
+        <div class="product-type">Single Origin</div>
+        <p class="product-desc">A bold, terroir-driven cup that lets the unique character of its origin shine through. Complex, layered, unforgettable.</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">$8</div>
+            <div class="product-size">2 oz bag</div>
+          </div>
+          <a href="https://www.aromaticbeans.net/single-origin---la-bamba" class="btn-order" target="_blank">Order →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img kamelot">
+        <span class="product-icon">☕</span>
+        <div class="roast-badge">Light Roast</div>
+        <div class="product-name-overlay">The Kamelot</div>
+      </div>
+      <div class="product-body">
+        <div class="product-type">Light Roast</div>
+        <p class="product-desc">Bright, floral, and delicate. The Kamelot is a gentle awakening — smooth with vibrant acidity and a lingering sweetness.</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">$8</div>
+            <div class="product-size">2 oz bag</div>
+          </div>
+          <a href="https://www.aromaticbeans.net/light-roast---the-kamelot" class="btn-order" target="_blank">Order →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img splash">
+        <span class="product-icon">☕</span>
+        <div class="roast-badge">Medium Roast</div>
+        <div class="product-name-overlay">Splash</div>
+      </div>
+      <div class="product-body">
+        <div class="product-type">Medium Roast</div>
+        <p class="product-desc">The perfect balance. Splash bridges brightness and body — rich, smooth, and ideal for any time of day.</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">$8</div>
+            <div class="product-size">2 oz bag</div>
+          </div>
+          <a href="https://www.aromaticbeans.net/medium-roast---splash" class="btn-order" target="_blank">Order →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-card-img one-shot">
+        <span class="product-icon">☕</span>
+        <div class="roast-badge">Dark Roast</div>
+        <div class="product-name-overlay">One Shot</div>
+      </div>
+      <div class="product-body">
+        <div class="product-type">Dark Roast</div>
+        <p class="product-desc">Deep, bold, unapologetic. One Shot is the coffee for those who want their cup to mean something — smoky, intense, and powerful.</p>
+        <div class="product-footer">
+          <div>
+            <div class="product-price">$8</div>
+            <div class="product-size">2 oz bag</div>
+          </div>
+          <a href="https://www.aromaticbeans.net/dark-roast---one-shot" class="btn-order" target="_blank">Order →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SPECIAL OFFER -->
+<section class="special">
+  <div class="special-content">
+    <span class="special-eyebrow">Limited Offer</span>
+    <h2>Mix & Match<br><strong>3 Bags for $20</strong></h2>
+    <p class="special-desc">Try any three of our signature blends and save. Use the code below at checkout.</p>
+    <div>
+      <div class="promo-label" style="margin-bottom:10px">PROMO CODE</div>
+      <div class="promo-code">E1K4TK9</div>
+    </div>
+    <br><br>
+    <a href="https://www.aromaticbeans.net/3-for-20-special" class="btn-primary" target="_blank">Claim This Deal</a>
+  </div>
+</section>
+
+<!-- K-CUPS -->
+<div style="background: var(--cream);">
+<section id="kcups" class="kcups">
+  <div class="kcups-text">
+    <div class="section-label">K-Cup Collection</div>
+    <h2>The convenience<br>of great coffee,<br><em style="font-style:italic">every morning.</em></h2>
+    <p>All four of our signature blends are available in 12-count K-Cup packs — perfect for your Keurig brewer. Same exceptional quality, effortless every time.</p>
+    <div class="kcup-flavors">
+      <div class="kcup-flavor">
+        <div class="kcup-flavor-name">La Bamba</div>
+        <div class="kcup-flavor-sub">Single Origin</div>
+      </div>
+      <div class="kcup-flavor">
+        <div class="kcup-flavor-name">The Kamelot</div>
+        <div class="kcup-flavor-sub">Light Roast</div>
+      </div>
+      <div class="kcup-flavor">
+        <div class="kcup-flavor-name">Splash</div>
+        <div class="kcup-flavor-sub">Medium Roast</div>
+      </div>
+      <div class="kcup-flavor">
+        <div class="kcup-flavor-name">One Shot</div>
+        <div class="kcup-flavor-sub">Dark Roast</div>
+      </div>
+    </div>
+    <a href="https://www.aromaticbeans.net" class="btn-primary" target="_blank">Shop K-Cups — $20 / 12ct</a>
+  </div>
+  <div class="kcups-visual">
+    <div class="kcups-display">
+      <div class="kcups-ring"></div>
+      <div class="kcups-ring2"></div>
+      <div class="kcups-display-text">
+        <div class="big">12</div>
+        <div class="small">K-Cups per box</div>
+        <div class="price">$20.00</div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- INSTAGRAM -->
+<section class="insta" id="contact">
+  <h2>Follow the journey<br><span class="insta-handle">@aromaticbeans_ceo</span></h2>
+  <p>Behind every great cup is a story. Follow us on Instagram.</p>
+  <a href="https://www.instagram.com/aromaticbeans_ceo/" class="insta-btn" target="_blank">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/>
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+    </svg>
+    Follow Us on Instagram
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">Aromatic Beans</span>
+      <p class="footer-tagline">Ethically sourced. Sustainably produced. Crafted for the moments that matter — morning, noon &amp; night.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="https://www.aromaticbeans.net/single-origin---la-bamba" target="_blank">La Bamba</a></li>
+        <li><a href="https://www.aromaticbeans.net/light-roast---the-kamelot" target="_blank">The Kamelot</a></li>
+        <li><a href="https://www.aromaticbeans.net/medium-roast---splash" target="_blank">Splash</a></li>
+        <li><a href="https://www.aromaticbeans.net/dark-roast---one-shot" target="_blank">One Shot</a></li>
+        <li><a href="https://www.aromaticbeans.net/3-for-20-special" target="_blank">3 for $20 Special</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        <a href="tel:3014789177">301-478-9177</a><br><br>
+        <a href="mailto:aromaticbeansceo44@gmail.com">aromaticbeansceo44@gmail.com</a><br><br>
+        <a href="https://www.instagram.com/aromaticbeans_ceo/" target="_blank">@aromaticbeans_ceo</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 Aromatic Beans. All rights reserved.</span>
+    <span class="footer-copy">www.aromaticbeans.net</span>
+  </div>
+</footer>
+
+</body>
+</html>
